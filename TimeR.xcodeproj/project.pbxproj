@@ -14,6 +14,12 @@
 		257013C7297696C000B407A8 /* TimeRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013C6297696C000B407A8 /* TimeRTests.swift */; };
 		257013D1297696C000B407A8 /* TimeRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013D0297696C000B407A8 /* TimeRUITests.swift */; };
 		257013D3297696C000B407A8 /* TimeRUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013D2297696C000B407A8 /* TimeRUITestsLaunchTests.swift */; };
+		257013E32976972700B407A8 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013E22976972700B407A8 /* BackgroundView.swift */; };
+		257013E52976975B00B407A8 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013E42976975B00B407A8 /* BackgroundGradient.swift */; };
+		257013E729769FCA00B407A8 /* BackgroundGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013E629769FCA00B407A8 /* BackgroundGlobe.swift */; };
+		257013EB2976A15C00B407A8 /* BackgroundSun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013EA2976A15C00B407A8 /* BackgroundSun.swift */; };
+		257013ED2976A67200B407A8 /* BackgroundMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013EC2976A67200B407A8 /* BackgroundMoon.swift */; };
+		257013EF29770B9500B407A8 /* BackgroundClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013EE29770B9500B407A8 /* BackgroundClouds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,12 @@
 		257013CC297696C000B407A8 /* TimeRUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeRUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		257013D0297696C000B407A8 /* TimeRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRUITests.swift; sourceTree = "<group>"; };
 		257013D2297696C000B407A8 /* TimeRUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		257013E22976972700B407A8 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		257013E42976975B00B407A8 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
+		257013E629769FCA00B407A8 /* BackgroundGlobe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGlobe.swift; sourceTree = "<group>"; };
+		257013EA2976A15C00B407A8 /* BackgroundSun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSun.swift; sourceTree = "<group>"; };
+		257013EC2976A67200B407A8 /* BackgroundMoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMoon.swift; sourceTree = "<group>"; };
+		257013EE29770B9500B407A8 /* BackgroundClouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClouds.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,9 @@
 			children = (
 				257013B4297696BE00B407A8 /* TimeRApp.swift */,
 				257013B6297696BE00B407A8 /* ContentView.swift */,
+				257013E12976970C00B407A8 /* View Models */,
+				257013E02976970300B407A8 /* Models */,
+				257013DF297696F800B407A8 /* Views */,
 				257013B8297696C000B407A8 /* Assets.xcassets */,
 				257013BA297696C000B407A8 /* TimeR.entitlements */,
 				257013BB297696C000B407A8 /* Preview Content */,
@@ -127,6 +142,33 @@
 				257013D2297696C000B407A8 /* TimeRUITestsLaunchTests.swift */,
 			);
 			path = TimeRUITests;
+			sourceTree = "<group>";
+		};
+		257013DF297696F800B407A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				257013E22976972700B407A8 /* BackgroundView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		257013E02976970300B407A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		257013E12976970C00B407A8 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				257013E42976975B00B407A8 /* BackgroundGradient.swift */,
+				257013E629769FCA00B407A8 /* BackgroundGlobe.swift */,
+				257013EA2976A15C00B407A8 /* BackgroundSun.swift */,
+				257013EC2976A67200B407A8 /* BackgroundMoon.swift */,
+				257013EE29770B9500B407A8 /* BackgroundClouds.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +301,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				257013EB2976A15C00B407A8 /* BackgroundSun.swift in Sources */,
+				257013E32976972700B407A8 /* BackgroundView.swift in Sources */,
+				257013E729769FCA00B407A8 /* BackgroundGlobe.swift in Sources */,
+				257013EF29770B9500B407A8 /* BackgroundClouds.swift in Sources */,
+				257013ED2976A67200B407A8 /* BackgroundMoon.swift in Sources */,
+				257013E52976975B00B407A8 /* BackgroundGradient.swift in Sources */,
 				257013B7297696BE00B407A8 /* ContentView.swift in Sources */,
 				257013B5297696BE00B407A8 /* TimeRApp.swift in Sources */,
 			);
