@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var colorScheme: TimeColorScheme = TimeColorScheme()
+    
     var body: some View {
         VStack {
-            BackgroundClouds()
+            BackgroundNightSkyOverlay()
+                .environmentObject(colorScheme)
         }
     }
 }

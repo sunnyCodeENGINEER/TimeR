@@ -20,6 +20,8 @@
 		257013EB2976A15C00B407A8 /* BackgroundSun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013EA2976A15C00B407A8 /* BackgroundSun.swift */; };
 		257013ED2976A67200B407A8 /* BackgroundMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013EC2976A67200B407A8 /* BackgroundMoon.swift */; };
 		257013EF29770B9500B407A8 /* BackgroundClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013EE29770B9500B407A8 /* BackgroundClouds.swift */; };
+		257013F12977791F00B407A8 /* TimeColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013F02977791F00B407A8 /* TimeColorScheme.swift */; };
+		257013F329778C1800B407A8 /* BackgroundNightSkyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013F229778C1800B407A8 /* BackgroundNightSkyOverlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		257013EA2976A15C00B407A8 /* BackgroundSun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSun.swift; sourceTree = "<group>"; };
 		257013EC2976A67200B407A8 /* BackgroundMoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMoon.swift; sourceTree = "<group>"; };
 		257013EE29770B9500B407A8 /* BackgroundClouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClouds.swift; sourceTree = "<group>"; };
+		257013F02977791F00B407A8 /* TimeColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeColorScheme.swift; sourceTree = "<group>"; };
+		257013F229778C1800B407A8 /* BackgroundNightSkyOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNightSkyOverlay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 		257013E02976970300B407A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				257013F02977791F00B407A8 /* TimeColorScheme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				257013E42976975B00B407A8 /* BackgroundGradient.swift */,
+				257013F229778C1800B407A8 /* BackgroundNightSkyOverlay.swift */,
 				257013E629769FCA00B407A8 /* BackgroundGlobe.swift */,
 				257013EA2976A15C00B407A8 /* BackgroundSun.swift */,
 				257013EC2976A67200B407A8 /* BackgroundMoon.swift */,
@@ -301,10 +307,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				257013F12977791F00B407A8 /* TimeColorScheme.swift in Sources */,
 				257013EB2976A15C00B407A8 /* BackgroundSun.swift in Sources */,
 				257013E32976972700B407A8 /* BackgroundView.swift in Sources */,
 				257013E729769FCA00B407A8 /* BackgroundGlobe.swift in Sources */,
 				257013EF29770B9500B407A8 /* BackgroundClouds.swift in Sources */,
+				257013F329778C1800B407A8 /* BackgroundNightSkyOverlay.swift in Sources */,
 				257013ED2976A67200B407A8 /* BackgroundMoon.swift in Sources */,
 				257013E52976975B00B407A8 /* BackgroundGradient.swift in Sources */,
 				257013B7297696BE00B407A8 /* ContentView.swift in Sources */,
