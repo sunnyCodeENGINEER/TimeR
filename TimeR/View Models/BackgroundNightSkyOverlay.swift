@@ -46,6 +46,19 @@ struct BackgroundNightSkyOverlay: View {
         }
         .onAppear {
             // new code goes here
+            if timeString >= 22 && timeString < 24 {
+                opacity2 = 1
+            }
+            if timeString >= 21 && timeString < 24 {
+                opacity1 = 1
+            }
+            if timeString >= 0 && timeString < 2 {
+                opacity2 = 1
+            }
+            if timeString >= 0 && timeString < 3 {
+                opacity1 = 1
+            }
+            print("here")
             
         }
         .onReceive(self.timer) { value in
@@ -99,19 +112,19 @@ struct BackgroundNightSkyOverlay: View {
                 }
                 break
             default:
-                if timeString >= 22 && timeString < 24 {
-                    opacity2 = 1
-                }
-                if timeString >= 21 && timeString < 24 {
-                    opacity1 = 1
-                }
-                if timeString >= 0 && timeString < 2 {
-                    opacity2 = 1
-                }
-                if timeString >= 0 && timeString < 3 {
-                    opacity1 = 1
-                }
-                print("here")
+//                if timeString >= 22 && timeString < 24 {
+//                    opacity2 = 1
+//                }
+//                if timeString >= 21 && timeString < 24 {
+//                    opacity1 = 1
+//                }
+//                if timeString >= 0 && timeString < 2 {
+//                    opacity2 = 1
+//                }
+//                if timeString >= 0 && timeString < 3 {
+//                    opacity1 = 1
+//                }
+//                print("here")
                 break
             }
         }

@@ -12,12 +12,15 @@ struct BackgroundGradient: View {
     
     @State private var timeString: Double = 0
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var animate: Bool = false
     @State private var trial = ""
     
     var body: some View {
         ZStack {
             LinearGradient(colors: [colorScheme.color1, colorScheme.color2], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
+                .opacity(animate ? 1 : 0)
+                .animation(.easeInOut(duration: 2), value: colorScheme.color1)
             
             VStack {
                 Text(String(timeString))
@@ -27,11 +30,17 @@ struct BackgroundGradient: View {
         }
         .onReceive(self.timer) { value in
             let temp = date24HourFormatter(time: Date.now.formatted(.dateTime.hour()))
-            
-//            timeString = Double(Date.now.formatted(.dateTime.hour(.conversationalDefaultDigits(amPM: .omitted)))) ?? 0
             timeString = Double(temp) ?? 0
             
             switch timeString {
+            case 0:
+                // done
+                colorScheme.color1 = Color(0x0E0A14)
+                colorScheme.color2 = Color(0x3D3772)
+                colorScheme.color3 = Color(0xCE751D)
+                colorScheme.color4 = Color(0x642F1F)
+                colorScheme.color5 = Color(0x1D1D43)
+                break
             case 1..<3:
                 trial = "Success"
                 // done
@@ -97,7 +106,7 @@ struct BackgroundGradient: View {
                 colorScheme.color4 = Color(0xFEB47B)
                 colorScheme.color5 = Color(0xF5AB99)
                 break
-            case 21..<0:
+            case 21..<24:
                 // done
                 colorScheme.color1 = Color(0x0E0A14)
                 colorScheme.color2 = Color(0x3D3772)
@@ -108,6 +117,8 @@ struct BackgroundGradient: View {
             default:
                 break
             }
+            
+            animate = true
         }
     }
     

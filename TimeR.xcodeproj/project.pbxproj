@@ -22,6 +22,13 @@
 		257013EF29770B9500B407A8 /* BackgroundClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013EE29770B9500B407A8 /* BackgroundClouds.swift */; };
 		257013F12977791F00B407A8 /* TimeColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013F02977791F00B407A8 /* TimeColorScheme.swift */; };
 		257013F329778C1800B407A8 /* BackgroundNightSkyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013F229778C1800B407A8 /* BackgroundNightSkyOverlay.swift */; };
+		257013F82978D56A00B407A8 /* ReminderModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 257013F62978D56A00B407A8 /* ReminderModel.xcdatamodeld */; };
+		257013FA2978D72500B407A8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013F92978D72500B407A8 /* DataController.swift */; };
+		257013FF2978DE6300B407A8 /* UpcomingEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257013FE2978DE6300B407A8 /* UpcomingEventCard.swift */; };
+		257014022978DE9B00B407A8 /* AddReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257014012978DE9B00B407A8 /* AddReminderView.swift */; };
+		257014042978E19B00B407A8 /* TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257014032978E19B00B407A8 /* TimeFormatting.swift */; };
+		25FCB7762978E8C600F26EC2 /* TestHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7752978E8C600F26EC2 /* TestHomeView.swift */; };
+		25FCB7782978F34700F26EC2 /* TestEditReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +68,13 @@
 		257013EE29770B9500B407A8 /* BackgroundClouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClouds.swift; sourceTree = "<group>"; };
 		257013F02977791F00B407A8 /* TimeColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeColorScheme.swift; sourceTree = "<group>"; };
 		257013F229778C1800B407A8 /* BackgroundNightSkyOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNightSkyOverlay.swift; sourceTree = "<group>"; };
+		257013F72978D56A00B407A8 /* ReminderModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReminderModel.xcdatamodel; sourceTree = "<group>"; };
+		257013F92978D72500B407A8 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		257013FE2978DE6300B407A8 /* UpcomingEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventCard.swift; sourceTree = "<group>"; };
+		257014012978DE9B00B407A8 /* AddReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderView.swift; sourceTree = "<group>"; };
+		257014032978E19B00B407A8 /* TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatting.swift; sourceTree = "<group>"; };
+		25FCB7752978E8C600F26EC2 /* TestHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHomeView.swift; sourceTree = "<group>"; };
+		25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEditReminderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				257013B4297696BE00B407A8 /* TimeRApp.swift */,
+				257013FD2978DDE600B407A8 /* Helpers */,
 				257013B6297696BE00B407A8 /* ContentView.swift */,
+				257014002978DE8400B407A8 /* TestViews */,
 				257013E12976970C00B407A8 /* View Models */,
 				257013E02976970300B407A8 /* Models */,
 				257013DF297696F800B407A8 /* Views */,
@@ -159,6 +175,7 @@
 		257013E02976970300B407A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				257013F52978D52500B407A8 /* DataModel */,
 				257013F02977791F00B407A8 /* TimeColorScheme.swift */,
 			);
 			path = Models;
@@ -167,6 +184,7 @@
 		257013E12976970C00B407A8 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				257013F42978C41700B407A8 /* HomeView View Models */,
 				257013E42976975B00B407A8 /* BackgroundGradient.swift */,
 				257013F229778C1800B407A8 /* BackgroundNightSkyOverlay.swift */,
 				257013E629769FCA00B407A8 /* BackgroundGlobe.swift */,
@@ -175,6 +193,41 @@
 				257013EE29770B9500B407A8 /* BackgroundClouds.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		257013F42978C41700B407A8 /* HomeView View Models */ = {
+			isa = PBXGroup;
+			children = (
+				257013FE2978DE6300B407A8 /* UpcomingEventCard.swift */,
+			);
+			path = "HomeView View Models";
+			sourceTree = "<group>";
+		};
+		257013F52978D52500B407A8 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				257013F62978D56A00B407A8 /* ReminderModel.xcdatamodeld */,
+				257013F92978D72500B407A8 /* DataController.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		257013FD2978DDE600B407A8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				257014032978E19B00B407A8 /* TimeFormatting.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		257014002978DE8400B407A8 /* TestViews */ = {
+			isa = PBXGroup;
+			children = (
+				257014012978DE9B00B407A8 /* AddReminderView.swift */,
+				25FCB7752978E8C600F26EC2 /* TestHomeView.swift */,
+				25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */,
+			);
+			path = TestViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,11 +360,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				257013F82978D56A00B407A8 /* ReminderModel.xcdatamodeld in Sources */,
+				25FCB7762978E8C600F26EC2 /* TestHomeView.swift in Sources */,
+				257013FA2978D72500B407A8 /* DataController.swift in Sources */,
+				257013FF2978DE6300B407A8 /* UpcomingEventCard.swift in Sources */,
 				257013F12977791F00B407A8 /* TimeColorScheme.swift in Sources */,
 				257013EB2976A15C00B407A8 /* BackgroundSun.swift in Sources */,
+				257014042978E19B00B407A8 /* TimeFormatting.swift in Sources */,
+				25FCB7782978F34700F26EC2 /* TestEditReminderView.swift in Sources */,
 				257013E32976972700B407A8 /* BackgroundView.swift in Sources */,
 				257013E729769FCA00B407A8 /* BackgroundGlobe.swift in Sources */,
 				257013EF29770B9500B407A8 /* BackgroundClouds.swift in Sources */,
+				257014022978DE9B00B407A8 /* AddReminderView.swift in Sources */,
 				257013F329778C1800B407A8 /* BackgroundNightSkyOverlay.swift in Sources */,
 				257013ED2976A67200B407A8 /* BackgroundMoon.swift in Sources */,
 				257013E52976975B00B407A8 /* BackgroundGradient.swift in Sources */,
@@ -668,6 +728,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		257013F62978D56A00B407A8 /* ReminderModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				257013F72978D56A00B407A8 /* ReminderModel.xcdatamodel */,
+			);
+			currentVersion = 257013F72978D56A00B407A8 /* ReminderModel.xcdatamodel */;
+			path = ReminderModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 257013A9297696BE00B407A8 /* Project object */;
 }

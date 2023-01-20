@@ -60,7 +60,16 @@ struct BackgroundSun: View {
                     
                     xAxis = ((UIScreen.main.bounds.width * 1.3) / 43200) * Double(temp)! - 50
                     break
-                case 12..<17:
+                case 12:
+                    let constant =  timeInSeconds("04:59:59")
+                    let currentTime = timeInSeconds(value.formatted(.dateTime.hour(.conversationalDefaultDigits(amPM: .omitted)).minute().second()))
+                    let temp = String((Double(currentTime) ?? 1) - ((Double(constant) ?? 1)))
+                    holder1 = String(temp)
+                    holder2 = String(currentTime)
+                    
+                    
+                    xAxis = ((UIScreen.main.bounds.width * 1.3) / 43200) * Double(temp)! - 50
+                case 13..<17:
                     let constant =  timeInSeconds("07:00:00")
                     let currentTime = timeInSeconds(value.formatted(.dateTime.hour(.conversationalDefaultDigits(amPM: .omitted)).minute().second()))
                     let temp = String((Double(currentTime) ?? 1) + ((Double(constant) ?? 1)))
