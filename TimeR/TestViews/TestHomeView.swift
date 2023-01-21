@@ -24,8 +24,6 @@ struct TestHomeView: View {
                                 VStack(alignment: .leading, spacing: 6) {
                                     Text(reminder.title!)
                                         .bold()
-                                    
-                                    
                                 }
                                 Spacer()
                                 Text(calcTimeSince(date: reminder.date!))

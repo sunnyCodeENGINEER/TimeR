@@ -29,6 +29,7 @@
 		257014042978E19B00B407A8 /* TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257014032978E19B00B407A8 /* TimeFormatting.swift */; };
 		25FCB7762978E8C600F26EC2 /* TestHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7752978E8C600F26EC2 /* TestHomeView.swift */; };
 		25FCB7782978F34700F26EC2 /* TestEditReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */; };
+		25FCB77A297A1CFE00F26EC2 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB779297A1CFE00F26EC2 /* TodoListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		257014032978E19B00B407A8 /* TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatting.swift; sourceTree = "<group>"; };
 		25FCB7752978E8C600F26EC2 /* TestHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHomeView.swift; sourceTree = "<group>"; };
 		25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEditReminderView.swift; sourceTree = "<group>"; };
+		25FCB779297A1CFE00F26EC2 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				257013FE2978DE6300B407A8 /* UpcomingEventCard.swift */,
+				25FCB779297A1CFE00F26EC2 /* TodoListView.swift */,
 			);
 			path = "HomeView View Models";
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				257014022978DE9B00B407A8 /* AddReminderView.swift in Sources */,
 				257013F329778C1800B407A8 /* BackgroundNightSkyOverlay.swift in Sources */,
 				257013ED2976A67200B407A8 /* BackgroundMoon.swift in Sources */,
+				25FCB77A297A1CFE00F26EC2 /* TodoListView.swift in Sources */,
 				257013E52976975B00B407A8 /* BackgroundGradient.swift in Sources */,
 				257013B7297696BE00B407A8 /* ContentView.swift in Sources */,
 				257013B5297696BE00B407A8 /* TimeRApp.swift in Sources */,
