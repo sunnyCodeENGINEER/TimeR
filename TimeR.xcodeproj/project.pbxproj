@@ -30,6 +30,7 @@
 		25FCB7762978E8C600F26EC2 /* TestHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7752978E8C600F26EC2 /* TestHomeView.swift */; };
 		25FCB7782978F34700F26EC2 /* TestEditReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */; };
 		25FCB77A297A1CFE00F26EC2 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB779297A1CFE00F26EC2 /* TodoListView.swift */; };
+		25FCB77C297E5FBC00F26EC2 /* UpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB77B297E5FBC00F26EC2 /* UpcomingEventView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		25FCB7752978E8C600F26EC2 /* TestHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHomeView.swift; sourceTree = "<group>"; };
 		25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEditReminderView.swift; sourceTree = "<group>"; };
 		25FCB779297A1CFE00F26EC2 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		25FCB77B297E5FBC00F26EC2 /* UpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			children = (
 				257013FE2978DE6300B407A8 /* UpcomingEventCard.swift */,
 				25FCB779297A1CFE00F26EC2 /* TodoListView.swift */,
+				25FCB77B297E5FBC00F26EC2 /* UpcomingEventView.swift */,
 			);
 			path = "HomeView View Models";
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				25FCB7762978E8C600F26EC2 /* TestHomeView.swift in Sources */,
 				257013FA2978D72500B407A8 /* DataController.swift in Sources */,
 				257013FF2978DE6300B407A8 /* UpcomingEventCard.swift in Sources */,
+				25FCB77C297E5FBC00F26EC2 /* UpcomingEventView.swift in Sources */,
 				257013F12977791F00B407A8 /* TimeColorScheme.swift in Sources */,
 				257013EB2976A15C00B407A8 /* BackgroundSun.swift in Sources */,
 				257014042978E19B00B407A8 /* TimeFormatting.swift in Sources */,
