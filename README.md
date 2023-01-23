@@ -4,3 +4,4 @@
 
 ## Progress made
 * Started working on the main app view.
+* Connecting core data to the UI of the app.
