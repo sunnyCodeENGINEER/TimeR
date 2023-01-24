@@ -31,6 +31,9 @@
 		25FCB7782978F34700F26EC2 /* TestEditReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */; };
 		25FCB77A297A1CFE00F26EC2 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB779297A1CFE00F26EC2 /* TodoListView.swift */; };
 		25FCB77C297E5FBC00F26EC2 /* UpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB77B297E5FBC00F26EC2 /* UpcomingEventView.swift */; };
+		25FCB77F297F944D00F26EC2 /* EditReminderTitleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB77E297F944D00F26EC2 /* EditReminderTitleField.swift */; };
+		25FCB783297FA37900F26EC2 /* CircularSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB782297FA37900F26EC2 /* CircularSliderView.swift */; };
+		25FCB785297FA3E800F26EC2 /* CircularSliderViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB784297FA3E800F26EC2 /* CircularSliderViewTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEditReminderView.swift; sourceTree = "<group>"; };
 		25FCB779297A1CFE00F26EC2 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		25FCB77B297E5FBC00F26EC2 /* UpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventView.swift; sourceTree = "<group>"; };
+		25FCB77E297F944D00F26EC2 /* EditReminderTitleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderTitleField.swift; sourceTree = "<group>"; };
+		25FCB782297FA37900F26EC2 /* CircularSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularSliderView.swift; sourceTree = "<group>"; };
+		25FCB784297FA3E800F26EC2 /* CircularSliderViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularSliderViewTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +194,7 @@
 		257013E12976970C00B407A8 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				25FCB77D297F940500F26EC2 /* Edit Reminder View Models */,
 				257013F42978C41700B407A8 /* HomeView View Models */,
 				257013E42976975B00B407A8 /* BackgroundGradient.swift */,
 				257013F229778C1800B407A8 /* BackgroundNightSkyOverlay.swift */,
@@ -231,9 +238,19 @@
 			children = (
 				257014012978DE9B00B407A8 /* AddReminderView.swift */,
 				25FCB7752978E8C600F26EC2 /* TestHomeView.swift */,
+				25FCB784297FA3E800F26EC2 /* CircularSliderViewTest.swift */,
 				25FCB7772978F34700F26EC2 /* TestEditReminderView.swift */,
 			);
 			path = TestViews;
+			sourceTree = "<group>";
+		};
+		25FCB77D297F940500F26EC2 /* Edit Reminder View Models */ = {
+			isa = PBXGroup;
+			children = (
+				25FCB77E297F944D00F26EC2 /* EditReminderTitleField.swift */,
+				25FCB782297FA37900F26EC2 /* CircularSliderView.swift */,
+			);
+			path = "Edit Reminder View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,7 +383,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25FCB783297FA37900F26EC2 /* CircularSliderView.swift in Sources */,
 				257013F82978D56A00B407A8 /* ReminderModel.xcdatamodeld in Sources */,
+				25FCB785297FA3E800F26EC2 /* CircularSliderViewTest.swift in Sources */,
+				25FCB77F297F944D00F26EC2 /* EditReminderTitleField.swift in Sources */,
 				25FCB7762978E8C600F26EC2 /* TestHomeView.swift in Sources */,
 				257013FA2978D72500B407A8 /* DataController.swift in Sources */,
 				257013FF2978DE6300B407A8 /* UpcomingEventCard.swift in Sources */,
