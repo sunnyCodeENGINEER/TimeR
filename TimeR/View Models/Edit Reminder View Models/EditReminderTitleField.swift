@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct EditReminderTitleField: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @Environment(\.dismiss) var dismiss
-    
     var reminder: FetchedResults<Reminder>.Element
     
-    @State private var title = ""
-    @State private var summary = ""
-    @State private var date = Date()
+    @Binding var title: String
+    @Binding var summary: String
     
     var body: some View {
         Form {
@@ -28,7 +24,6 @@ struct EditReminderTitleField: View {
                         .onAppear {
                             title = reminder.title!
                             summary = reminder.summary!
-                            date = reminder.date!
                         }
                 }
             }

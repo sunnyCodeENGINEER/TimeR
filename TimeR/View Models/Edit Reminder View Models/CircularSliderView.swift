@@ -9,13 +9,15 @@ import SwiftUI
 
 struct CircularSliderView: View {
     @Binding var progress: Double
+    var unit: String
 
     @State private var rotationAngle = Angle(degrees: 0)
     private var minValue = 0.0
     private var maxValue = 1.0
     
-    init(value progress: Binding<Double>, in bounds: ClosedRange<Int> = 0...1) {
+    init(value progress: Binding<Double>, unit: String = "", in bounds: ClosedRange<Int> = 0...1) {
         self._progress = progress
+        self.unit = unit
         
         self.minValue = Double(bounds.first ?? 0)
         self.maxValue = Double(bounds.last ?? 1)
@@ -52,8 +54,11 @@ struct CircularSliderView: View {
                         .stroke(Color(hue: 0.0, saturation: 0.0, brightness: 0.9),
                                 style: StrokeStyle(lineWidth: sliderWidth))
                         .overlay() {
-                            Text("\(progress, specifier: "%.0f")")
-                                .font(.system(size: radius * 0.7, weight: .bold, design:.rounded))
+                            VStack {
+                                Text("\(progress, specifier: "%.0f")")
+                                    .font(.system(size: radius * 0.7, weight: .bold, design:.rounded))
+                                Text(unit)
+                            }
                         }
                     // uncomment to show tick marks
                     //Circle()
