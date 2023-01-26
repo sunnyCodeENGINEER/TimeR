@@ -53,7 +53,7 @@ struct FirstUpcomingEvent: View {
             VStack(alignment: .leading) {
                 Text("\(reminder.title!)")
                     .font(.largeTitle)
-                VStack {
+                VStack(alignment: .leading) {
                     Text("\((reminder.date?.formatted(date: .numeric, time: .standard))!)")
                         .italic()
                     Text("\(calcTimeSince(date:reminder.date!))")
@@ -72,23 +72,23 @@ struct FirstUpcomingEvent: View {
             .aspectRatio(contentMode: .fit)
             
         }
-        .offset(y: -50)
+        .offset(y: -40)
         .padding()
-        .frame(width: 400, height: 150)
+        .frame(width: UIScreen.main.bounds.width * 0.86, height: 150)
         .background(RoundedRectangle(cornerRadius: 10)
-            .foregroundColor(.blue.opacity(0.3))
+            .fill(.thinMaterial)
             .background(Image(systemName: "map.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 400, height: 150)
-                .offset(x: 100, y: 100)
+                .frame(width: UIScreen.main.bounds.width * 0.86, height: 150)
+                .offset(x: 60, y: 20)
                 .rotationEffect(Angle(degrees: -45))
                 .opacity(0.3)
                 .clipShape(RoundedRectangle(cornerRadius: 10)))
             .overlay(RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 5)))
+                .stroke(lineWidth: 3)))
         
-        .padding()
+        .padding([.horizontal, .top])
     }
 }
 
@@ -96,9 +96,7 @@ struct NextUpcomingEvents: View {
     var reminder: FetchedResults<Reminder>.Element
     
     var body: some View {
-        ScrollView(.horizontal) {
             HStack {
-                ForEach(0..<50) { _ in
                     VStack(alignment: .leading) {
                         Text("\(reminder.title!)")
                             .font(.largeTitle)
@@ -113,13 +111,12 @@ struct NextUpcomingEvents: View {
                     .padding()
                     .frame(width: 150, height: 120)
                     .background(RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(.blue.opacity(0.3))
+                        .fill(.thinMaterial)
                         .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 5)))
+                            .stroke(lineWidth: 2)))
                     
-                    .padding()
+                    .padding([.bottom, .trailing])
                 }
-            }
-        }
+        
     }
 }

@@ -25,11 +25,20 @@ struct EditReminderView: View {
             
             EditReminderTime(reminder: reminder, date: $date, hours: $hours, minutes: $minutes)
             
+            DatePicker("Date", selection: $date, in: Date.now...)
+            
             HStack {
                 Spacer()
                 Button {
-                    let df = DateFormatter()
-                    df.dateFormat = "yyy-MM-dd'T'HH:mm:ss"
+//                    let day = date.formatted(.dateTime.day(.twoDigits))
+//                    let month = date.formatted(.dateTime.month(.twoDigits))
+//                    let year = date.formatted(.dateTime.year())
+//                    
+//                    let df = DateFormatter()
+//                    df.dateFormat = "yyy-MM-dd'T'HH:mm:ss"
+//                    
+//                    let isoDate = "\(year)-\(month)-\(day)T\(hours):\(minutes):00"
+//                    let reminderDate = df.date(from: isoDate)
                     
                     DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, context: managedObjectContext)
                     dismiss()

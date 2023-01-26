@@ -68,12 +68,8 @@ struct CircularSliderViewOverlay: View {
                 HStack(spacing: 0) {
                     if hours < 9.5 {
                         Text("0")
-//                            .font(setHours ? .largeTitle : .title2)
-//                            .fontWeight(setHours ? .bold : .regular)
                     }
                     Text("\(hours, specifier: "%.0f")")
-//                        .font(setHours ? .largeTitle : .title2)
-//                        .fontWeight(setHours ? .bold : .regular)
                     }
                 .font(.system(size: setHours ? 60 : 40, weight: setHours ? .bold : .regular, design:.rounded))
             }
@@ -87,12 +83,8 @@ struct CircularSliderViewOverlay: View {
                 HStack(spacing: 0) {
                     if minutes < 9.5 {
                         Text("0")
-//                            .font(setHours ? .title2 : .largeTitle)
-//                            .fontWeight(setHours ? .regular : .bold)
                     }
                     Text("\(minutes, specifier: "%.0f")")
-//                        .font(setHours ? .title2 : .largeTitle)
-//                        .fontWeight(setHours ? .regular : .bold)
                 }
                 .font(.system(size: !setHours ? 60 : 30, weight: !setHours ? .bold : .regular, design:.rounded))
             }
@@ -100,3 +92,4 @@ struct CircularSliderViewOverlay: View {
         .tint(myBlack)
     }
 }
+

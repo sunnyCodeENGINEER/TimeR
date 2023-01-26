@@ -9,7 +9,25 @@ import SwiftUI
 
 struct CircularSliderViewTest: View {
     var body: some View {
-        CircularSliderView5()
+        VStack {
+            CircularSliderView5()
+            
+            NavigationStack {
+                List {
+                    VStack {
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(0..<50) { index in
+                                    NavigationLink(destination: Text("\(index)")) {
+                                        Text("\(index)")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
