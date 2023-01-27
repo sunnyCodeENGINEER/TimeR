@@ -108,7 +108,7 @@ struct NextUpcomingEvents: View {
                         Text("\(reminder.location ?? String("no location"))")
                             .italic()
                     }
-                    .padding()
+//                    .padding()
                     .frame(width: 150, height: 120)
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(.thinMaterial)

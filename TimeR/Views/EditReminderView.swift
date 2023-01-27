@@ -17,11 +17,12 @@ struct EditReminderView: View {
     @State private var summary = ""
     @State private var date = Date()
     @State private var shouldRepeat: Bool = false
+    @State private var completed: Bool = false
     
     var body: some View {
         Form {
             Section {
-                    
+                Text("\(reminder.completed.description)")
                 VStack(alignment: .leading) {
                     Text("Title")
                     TextField("Title", text: $title)
@@ -32,6 +33,7 @@ struct EditReminderView: View {
                     summary = reminder.summary!
                     date = reminder.date!
                     shouldRepeat = reminder.shouldRepeat
+                    completed = reminder.completed
                 }
                 VStack(alignment: .leading) {
                     Text("Summary")
@@ -49,7 +51,7 @@ struct EditReminderView: View {
                 HStack {
                     Spacer()
                     Button {
-                        DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, context: managedObjectContext)
+                        DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, completed: completed, context: managedObjectContext)
                         dismiss()
                     } label: {
                         Text("Submit")

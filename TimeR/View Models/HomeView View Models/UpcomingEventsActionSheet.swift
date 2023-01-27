@@ -13,11 +13,17 @@ struct UpcomingEventsActionSheet: View {
     
     var reminder: FetchedResults<Reminder>.Element
     
+    @State private var title = ""
+    @State private var summary = ""
+    @State private var date = Date()
+    @State private var shouldRepeat: Bool = false
+    @State private var completed: Bool = false
+    
     var body: some View {
         VStack {
             Button {
-                managedObjectContext.delete(reminder)
-                
+                reminder.completed = true
+//                DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, completed: completed, context: managedObjectContext)
                 DataController().save(context: managedObjectContext)
                 dismiss()
             } label: {
@@ -26,6 +32,13 @@ struct UpcomingEventsActionSheet: View {
                     .background(RoundedRectangle(cornerRadius: 20)
                         .stroke()
                         .background(.thickMaterial))
+            }
+            .onAppear {
+                title = reminder.title!
+                summary = reminder.summary!
+                date = reminder.date!
+                shouldRepeat = reminder.shouldRepeat
+                completed = reminder.completed
             }
         }
     }

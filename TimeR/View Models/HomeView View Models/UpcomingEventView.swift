@@ -18,48 +18,45 @@ struct UpcomingEventView: View {
     var body: some View {        
         NavigationStack {
             List {
-                VStack {
-                    HStack {
-                        ForEach(self.reminders.indices, id: \.self) { index in
-                            if index == 0 {
-                                NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
-                                    FirstUpcomingEvent(reminder: reminders[index])
-                                        .onLongPressGesture {
-                                            showActionSheet.toggle()
-                                        }
-                                        .sheet(isPresented: $showActionSheet) {
-                                            UpcomingEventsActionSheet(reminder: reminders[index])
-                                        }
+                ForEach(self.reminders.indices, id: \.self) { index in
+                    if index == 0 {
+                        NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
+                            FirstUpcomingEvent(reminder: reminders[index])
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button {
+                                        managedObjectContext.delete(reminders[index])
+                                        
+                                        DataController().save(context: managedObjectContext)
+                                    } label: {
+                                        Image(systemName: "trash.fill")
+                                    }
+                                    .tint(.red)
                                 }
-                            }
-                        }
-                        .onDelete(perform: deleteReminder)
-                    }
-                    .padding()
-                    
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 5) {
-                            ForEach(self.reminders.indices, id: \.self) { index in
-                                if index != 0 {
-                                    NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
-                                        NextUpcomingEvents(reminder: reminders[index])
-                                            .padding(.leading)
-                                            .tint(Color("myBlack"))
-                                            .onLongPressGesture {
-                                                showActionSheet.toggle()
-                                            }
-                                            .sheet(isPresented: $showActionSheet) {
-                                                UpcomingEventsActionSheet(reminder: reminders[index])
-                                            }
+                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "checkmark.circle.fill")
                                     }
                                 }
-                            }
-//                            .onDelete(perform: deleteReminder)
+                                .tint(.green)
                         }
-                        .padding(.horizontal, 30)
                     }
                 }
-                .padding(.leading)
+                .padding()
+                    
+                ScrollView(.horizontal) {
+                    HStack(spacing: 5) {
+                        ForEach(self.reminders.indices, id: \.self) { index in
+                            if index != 0 {
+                                NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
+                                    NextUpcomingEvents(reminder: reminders[index])
+                                        .tint(Color("myBlack"))
+                                }
+                            }
+                        }
+                    }
+                }
                 .navigationTitle("Upcoming Events")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

@@ -44,7 +44,7 @@ struct TestEditReminderView: View {
                 HStack {
                     Spacer()
                     Button {
-                        DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: false, context: managedObjectContext)
+                        DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: false, completed: false, context: managedObjectContext)
                         dismiss()
                     } label: {
                         Text("Submit")
