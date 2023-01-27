@@ -16,36 +16,48 @@ struct EditReminderView: View {
     @State private var title = ""
     @State private var summary = ""
     @State private var date = Date()
-    @State var hours: Double = 0
-    @State var minutes: Double = 0
+    @State private var shouldRepeat: Bool = false
     
     var body: some View {
-        VStack {
-            EditReminderTitleField(reminder: reminder, title: $title, summary: $summary)
-            
-            EditReminderTime(reminder: reminder, date: $date, hours: $hours, minutes: $minutes)
-            
-            DatePicker("Date", selection: $date, in: Date.now...)
-            
-            HStack {
-                Spacer()
-                Button {
-//                    let day = date.formatted(.dateTime.day(.twoDigits))
-//                    let month = date.formatted(.dateTime.month(.twoDigits))
-//                    let year = date.formatted(.dateTime.year())
-//                    
-//                    let df = DateFormatter()
-//                    df.dateFormat = "yyy-MM-dd'T'HH:mm:ss"
-//                    
-//                    let isoDate = "\(year)-\(month)-\(day)T\(hours):\(minutes):00"
-//                    let reminderDate = df.date(from: isoDate)
+        Form {
+            Section {
                     
-                    DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, context: managedObjectContext)
-                    dismiss()
-                } label: {
-                    Text("Submit")
-                        .font(.title)
+                VStack(alignment: .leading) {
+                    Text("Title")
+                    TextField("Title", text: $title)
                 }
+                .padding()
+                .onAppear {
+                    title = reminder.title!
+                    summary = reminder.summary!
+                    date = reminder.date!
+                    shouldRepeat = reminder.shouldRepeat
+                }
+                VStack(alignment: .leading) {
+                    Text("Summary")
+                    TextField("Summary", text: $summary)
+                }
+                .padding()
+                VStack(alignment: .leading) {
+                    DatePicker("Date", selection: $date, in: Date()...)
+                }
+                .padding()
+                
+                Toggle("Repeat", isOn: $shouldRepeat)
+                    .background(.gray.opacity(0.3))
+                
+                HStack {
+                    Spacer()
+                    Button {
+                        DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, context: managedObjectContext)
+                        dismiss()
+                    } label: {
+                        Text("Submit")
+                            .font(.title)
+                    }
+                    Spacer()
+                }
+                
                 Spacer()
             }
         }

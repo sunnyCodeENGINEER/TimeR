@@ -12,66 +12,24 @@ struct UpcomingEventView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var reminders: FetchedResults<Reminder>
     
     @State private var showingAddView = false
+    @State private var showActionSheet: Bool = false
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    var body: some View {
-//        NavigationStack {
-//            ScrollView {
-//                VStack(alignment: .leading) {
-//                    //                List {
-//                    ForEach(self.reminders.indices, id: \.self) { index in
-//                        //                        NavigationLink(destination: TestEditReminderView(reminder: reminders[index])) {
-//                        if index == 0 {
-//                            FirstUpcomingEvent(reminder: reminders[index])
-//                                .padding(.horizontal)
-//                        }
-//                    }
-//                    .onDelete(perform: deleteReminder)
-//                    //                }
-//                    //                .frame(height: 180)
-//                    //                .listStyle(.plain)
-//
-//                    ScrollView(.horizontal) {
-//                        HStack {
-//                            ForEach(self.reminders.indices, id: \.self) { index in
-//                                if index != 0 {
-//                                    NextUpcomingEvents(reminder: reminders[index])
-//
-//                                }
-//                            }
-//                        }
-//                        .padding(.horizontal, 30)
-//                    }
-//
-//                    Spacer()
-//                }
-//            }
-//            .navigationTitle("Upcoming Events")
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button {
-//                        showingAddView.toggle()
-//                    } label: {
-//                        Label("Add Reminder", systemImage: "plus.circle")
-//                    }
-//                }
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    EditButton()
-//                }
-//            }
-//            .sheet(isPresented: $showingAddView) {
-//                AddReminderView()
-//            }
-//        }
-        
+    var body: some View {        
         NavigationStack {
             List {
                 VStack {
                     HStack {
                         ForEach(self.reminders.indices, id: \.self) { index in
                             if index == 0 {
-                                NavigationLink(destination: TestEditReminderView(reminder: reminders[index])) {
+                                NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
                                     FirstUpcomingEvent(reminder: reminders[index])
+                                        .onLongPressGesture {
+                                            showActionSheet.toggle()
+                                        }
+                                        .sheet(isPresented: $showActionSheet) {
+                                            UpcomingEventsActionSheet(reminder: reminders[index])
+                                        }
                                 }
                             }
                         }
@@ -83,10 +41,16 @@ struct UpcomingEventView: View {
                         HStack(spacing: 5) {
                             ForEach(self.reminders.indices, id: \.self) { index in
                                 if index != 0 {
-                                    NavigationLink(destination: TestEditReminderView(reminder: reminders[index])) {
+                                    NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
                                         NextUpcomingEvents(reminder: reminders[index])
                                             .padding(.leading)
                                             .tint(Color("myBlack"))
+                                            .onLongPressGesture {
+                                                showActionSheet.toggle()
+                                            }
+                                            .sheet(isPresented: $showActionSheet) {
+                                                UpcomingEventsActionSheet(reminder: reminders[index])
+                                            }
                                     }
                                 }
                             }

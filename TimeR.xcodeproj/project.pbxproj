@@ -36,6 +36,7 @@
 		25FCB785297FA3E800F26EC2 /* CircularSliderViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB784297FA3E800F26EC2 /* CircularSliderViewTest.swift */; };
 		25FCB7872980D79300F26EC2 /* EditReminderTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7862980D79300F26EC2 /* EditReminderTime.swift */; };
 		25FCB78B2980EA8100F26EC2 /* EditReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB78A2980EA8100F26EC2 /* EditReminderView.swift */; };
+		25FCB78D29823CB200F26EC2 /* UpcomingEventsActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB78C29823CB200F26EC2 /* UpcomingEventsActionSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		25FCB784297FA3E800F26EC2 /* CircularSliderViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularSliderViewTest.swift; sourceTree = "<group>"; };
 		25FCB7862980D79300F26EC2 /* EditReminderTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderTime.swift; sourceTree = "<group>"; };
 		25FCB78A2980EA8100F26EC2 /* EditReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderView.swift; sourceTree = "<group>"; };
+		25FCB78C29823CB200F26EC2 /* UpcomingEventsActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsActionSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				257013FE2978DE6300B407A8 /* UpcomingEventCard.swift */,
+				25FCB78C29823CB200F26EC2 /* UpcomingEventsActionSheet.swift */,
 				25FCB779297A1CFE00F26EC2 /* TodoListView.swift */,
 				25FCB77B297E5FBC00F26EC2 /* UpcomingEventView.swift */,
 			);
@@ -391,6 +394,7 @@
 			files = (
 				25FCB78B2980EA8100F26EC2 /* EditReminderView.swift in Sources */,
 				25FCB783297FA37900F26EC2 /* CircularSliderView.swift in Sources */,
+				25FCB78D29823CB200F26EC2 /* UpcomingEventsActionSheet.swift in Sources */,
 				257013F82978D56A00B407A8 /* ReminderModel.xcdatamodeld in Sources */,
 				25FCB785297FA3E800F26EC2 /* CircularSliderViewTest.swift in Sources */,
 				25FCB77F297F944D00F26EC2 /* EditReminderTitleField.swift in Sources */,
