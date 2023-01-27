@@ -43,7 +43,7 @@ struct UpcomingEventView: View {
                         }
                     }
                 }
-                .padding()
+                .padding([.leading, .top])
                     
                 ScrollView(.horizontal) {
                     HStack(spacing: 5) {
