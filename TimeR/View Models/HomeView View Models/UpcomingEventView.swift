@@ -9,7 +9,10 @@ import SwiftUI
 
 struct UpcomingEventView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var reminders: FetchedResults<Reminder>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]
+                  , predicate: NSPredicate(format: "shouldRepeat = true")) var reminders: FetchedResults<Reminder>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]
+                  , predicate: NSPredicate(format: "shouldRepeat = false")) var todos: FetchedResults<Reminder>
     
     @State private var showingAddView = false
     @State private var showActionSheet: Bool = false
@@ -44,9 +47,10 @@ struct UpcomingEventView: View {
                     }
                 }
                 .padding([.leading, .top])
-                    
+                
                 ScrollView(.horizontal) {
                     HStack(spacing: 5) {
+                        Spacer(minLength: 5)
                         ForEach(self.reminders.indices, id: \.self) { index in
                             if index != 0 {
                                 NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
@@ -74,6 +78,38 @@ struct UpcomingEventView: View {
                     AddReminderView()
                 }
             }
+            Text("TODO")
+                .font(.title2)
+                .fontWeight(.bold)
+                .padding()
+                
+            List {
+                ForEach(self.todos) { item in
+                    NavigationLink(destination: EditReminderView(reminder: item)) {
+                        TodoListView(reminder: item)
+                            .padding(.leading)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button {
+                                    managedObjectContext.delete(item)
+                                    
+                                    DataController().save(context: managedObjectContext)
+                                } label: {
+                                    Image(systemName: "trash.fill")
+                                }
+                                .tint(.red)
+                            }
+                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                Button {
+                                    
+                                } label: {
+                                    Image(systemName: "checkmark.circle.fill")
+                                }
+                                .tint(.green)
+                            }
+                    }
+                }
+            }
+            .listStyle(.plain)
         }
         .onReceive(self.timer) { value in
             reminders.forEach { reminder in

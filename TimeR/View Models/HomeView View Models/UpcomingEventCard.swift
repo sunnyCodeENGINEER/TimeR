@@ -39,12 +39,6 @@ struct UpcomingEventCard: View {
     }
 }
 
-//struct UpcomingEventCard_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UpcomingEventCard(reminder: .init())
-//    }
-//}
-
 struct FirstUpcomingEvent: View {
     var reminder: FetchedResults<Reminder>.Element
     
@@ -57,6 +51,10 @@ struct FirstUpcomingEvent: View {
                     Text("\((reminder.date?.formatted(date: .numeric, time: .standard))!)")
                         .italic()
                     Text("\(calcTimeSince(date:reminder.date!))")
+                        .font(.footnote)
+                        .italic()
+                        .foregroundColor(.gray)
+                        .padding(.trailing)
                 }
             }
             
@@ -99,13 +97,16 @@ struct NextUpcomingEvents: View {
             HStack {
                     VStack(alignment: .leading) {
                         Text("\(reminder.title!)")
-                            .font(.largeTitle)
+                            .font(.title)
                         VStack {
                             Text("\((reminder.date?.formatted(date: .omitted, time: .standard))!)")
+                                .font(.footnote)
                                 .italic()
                             Text("\((reminder.date?.formatted(date: .numeric, time: .omitted))!)")
+                                .font(.footnote)
                         }
                         Text("\(reminder.location ?? String("no location"))")
+                            .font(.footnote)
                             .italic()
                     }
 //                    .padding()
@@ -113,7 +114,7 @@ struct NextUpcomingEvents: View {
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(.thinMaterial)
                         .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 2)))
+                            .stroke(lineWidth: 3)))
                     
                     .padding([.bottom, .trailing])
                 }

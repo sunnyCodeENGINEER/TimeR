@@ -37,6 +37,8 @@
 		25FCB7872980D79300F26EC2 /* EditReminderTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7862980D79300F26EC2 /* EditReminderTime.swift */; };
 		25FCB78B2980EA8100F26EC2 /* EditReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB78A2980EA8100F26EC2 /* EditReminderView.swift */; };
 		25FCB78D29823CB200F26EC2 /* UpcomingEventsActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB78C29823CB200F26EC2 /* UpcomingEventsActionSheet.swift */; };
+		25FCB7932984035E00F26EC2 /* TodoDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7922984035E00F26EC2 /* TodoDataController.swift */; };
+		25FCB7962984038000F26EC2 /* TodoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7942984038000F26EC2 /* TodoModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		25FCB7862980D79300F26EC2 /* EditReminderTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderTime.swift; sourceTree = "<group>"; };
 		25FCB78A2980EA8100F26EC2 /* EditReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderView.swift; sourceTree = "<group>"; };
 		25FCB78C29823CB200F26EC2 /* UpcomingEventsActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsActionSheet.swift; sourceTree = "<group>"; };
+		25FCB7922984035E00F26EC2 /* TodoDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDataController.swift; sourceTree = "<group>"; };
+		25FCB7952984038000F26EC2 /* TodoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +233,8 @@
 			children = (
 				257013F62978D56A00B407A8 /* ReminderModel.xcdatamodeld */,
 				257013F92978D72500B407A8 /* DataController.swift */,
+				25FCB7922984035E00F26EC2 /* TodoDataController.swift */,
+				25FCB7942984038000F26EC2 /* TodoModel.xcdatamodeld */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -413,9 +419,11 @@
 				25FCB7872980D79300F26EC2 /* EditReminderTime.swift in Sources */,
 				257013F329778C1800B407A8 /* BackgroundNightSkyOverlay.swift in Sources */,
 				257013ED2976A67200B407A8 /* BackgroundMoon.swift in Sources */,
+				25FCB7932984035E00F26EC2 /* TodoDataController.swift in Sources */,
 				25FCB77A297A1CFE00F26EC2 /* TodoListView.swift in Sources */,
 				257013E52976975B00B407A8 /* BackgroundGradient.swift in Sources */,
 				257013B7297696BE00B407A8 /* ContentView.swift in Sources */,
+				25FCB7962984038000F26EC2 /* TodoModel.xcdatamodeld in Sources */,
 				257013B5297696BE00B407A8 /* TimeRApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,6 +785,16 @@
 			);
 			currentVersion = 257013F72978D56A00B407A8 /* ReminderModel.xcdatamodel */;
 			path = ReminderModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		25FCB7942984038000F26EC2 /* TodoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				25FCB7952984038000F26EC2 /* TodoModel.xcdatamodel */,
+			);
+			currentVersion = 25FCB7952984038000F26EC2 /* TodoModel.xcdatamodel */;
+			path = TodoModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
