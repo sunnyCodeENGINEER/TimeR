@@ -18,6 +18,7 @@ struct EditReminderView: View {
     @State private var date = Date()
     @State private var shouldRepeat: Bool = false
     @State private var completed: Bool = false
+    @State private var frequency: String = ""
     
     var body: some View {
         Form {
@@ -34,6 +35,7 @@ struct EditReminderView: View {
                     date = reminder.date!
                     shouldRepeat = reminder.shouldRepeat
                     completed = reminder.completed
+                    frequency = reminder.frequency ?? "daily"
                 }
                 VStack(alignment: .leading) {
                     Text("Summary")
@@ -48,10 +50,20 @@ struct EditReminderView: View {
                 Toggle("Repeat", isOn: $shouldRepeat)
                     .background(.gray.opacity(0.3))
                 
+                if shouldRepeat {
+                    Picker("Pick a frequency", selection: $frequency) {
+                        Text("daily").tag("daily")
+                        Text("weekly").tag("weekly")
+                        Text("monthly").tag("monthly")
+                        Text("yearly").tag("yearly")
+                    }
+                    .animation(.easeInOut, value: shouldRepeat)
+                }
                 HStack {
                     Spacer()
                     Button {
-                        DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, completed: completed, context: managedObjectContext)
+                        DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, frequency: frequency, completed: completed, context: managedObjectContext)
+                        print(frequency)
                         dismiss()
                     } label: {
                         Text("Submit")

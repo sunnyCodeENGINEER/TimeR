@@ -28,23 +28,25 @@ class DataController: ObservableObject {
         }
     }
     
-    func addReminder(title: String, summary: String, date: Date, shouldRepeat: Bool, context: NSManagedObjectContext) {
+    func addReminder(title: String, summary: String, date: Date, shouldRepeat: Bool, frequency: String = "daily", context: NSManagedObjectContext) {
         let reminder = Reminder(context: context)
         reminder.id = UUID()
         reminder.date = date
         reminder.title = title
         reminder.summary = summary
         reminder.shouldRepeat = shouldRepeat
+        reminder.frequency = frequency
         
         save(context: context)
     }
     
-    func editReminder(reminder: Reminder, title: String, summary: String, date: Date, shouldRepeat: Bool, completed: Bool, context: NSManagedObjectContext) {
+    func editReminder(reminder: Reminder, title: String, summary: String, date: Date, shouldRepeat: Bool, frequency: String, completed: Bool, context: NSManagedObjectContext) {
         reminder.title = title
         reminder.summary = summary
         reminder.date = date
         reminder.shouldRepeat = shouldRepeat
         reminder.completed = completed
+        reminder.frequency = frequency
         
         save(context: context)
     }

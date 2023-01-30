@@ -15,6 +15,7 @@ struct AddReminderView: View {
     @State private var summary: String = ""
     @State private var date = Date.now
     @State private var shouldRepeat: Bool = false
+    @State private var frequency: String = "daily"
     
     var body: some View {
         Form {
@@ -36,10 +37,19 @@ struct AddReminderView: View {
                 
                 Toggle("Repeat", isOn: $shouldRepeat)
                     .background(.gray.opacity(0.3))
+                if shouldRepeat {
+                    Picker("Pick a frequency", selection: $frequency) {
+                        Text("daily").tag("daily")
+                        Text("weekly").tag("weekly")
+                        Text("monthly").tag("monthly")
+                        Text("yearly").tag("yearly")
+                    }
+                    .animation(.easeInOut, value: shouldRepeat)
+                }
                 HStack {
                     Spacer()
                     Button {
-                        DataController().addReminder(title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, context: managedObjectContext)
+                        DataController().addReminder(title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, frequency: frequency, context: managedObjectContext)
                         dismiss()
                     } label: {
                         Text("Submit".uppercased())

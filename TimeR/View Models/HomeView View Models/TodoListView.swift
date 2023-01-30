@@ -9,17 +9,15 @@ import SwiftUI
 
 struct TodoListView: View {
     var reminder: FetchedResults<Reminder>.Element
+//    @Binding var isCompleted: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
-            //            Text("TODO")
-            //                .font(.title2)
-            //                .fontWeight(.bold)
-            //                .padding()
             HStack {
-                Image(systemName: "checkmark")
+                Image(systemName: reminder.completed ? "circle.fill" : "circle")
                     .resizable()
-                    .frame(width: 30, height: 25)
+                    .foregroundColor(reminder.completed ? .green : .black)
+                    .frame(width: 20, height: 20)
                     .scaledToFit()
                     .padding()
                 VStack(alignment: .leading) {

@@ -43,50 +43,68 @@ struct FirstUpcomingEvent: View {
     var reminder: FetchedResults<Reminder>.Element
     
     var body: some View {
-        HStack(alignment: .bottom) {
-            VStack(alignment: .leading) {
-                Text("\(reminder.title!)")
-                    .font(.largeTitle)
+        ZStack {
+            HStack(alignment: .bottom) {
                 VStack(alignment: .leading) {
-                    Text("\((reminder.date?.formatted(date: .numeric, time: .standard))!)")
-                        .italic()
-                    Text("\(calcTimeSince(date:reminder.date!))")
-                        .font(.footnote)
-                        .italic()
-                        .foregroundColor(.gray)
-                        .padding(.trailing)
+                    Text("\(reminder.title!)")
+                        .font(.largeTitle)
+                    VStack(alignment: .leading) {
+                        Text("\((reminder.date?.formatted(date: .numeric, time: .standard))!)")
+                            .italic()
+                        Text("\(calcTimeSince(date:reminder.date!))")
+                            .font(.footnote)
+                            .italic()
+                            .foregroundColor(.gray)
+                            .padding(.trailing)
+                    }
                 }
+                
+                Spacer()
+                
+                VStack {
+                    Image("LocationPinLight")
+                        .resizable()
+                    Text("\(reminder.location ?? String("no location"))")
+                        .italic()
+                }
+                .frame(width: 120, height: 150)
+                .aspectRatio(contentMode: .fit)
+                
             }
-            
-            Spacer()
-            
-            VStack {
-                Image("LocationPinLight")
+            .offset(y: -40)
+            .padding()
+            .frame(width: UIScreen.main.bounds.width * 0.86, height: 150)
+            .background(RoundedRectangle(cornerRadius: 10)
+                .fill(.thinMaterial)
+                .background(Image(systemName: "map.fill")
                     .resizable()
-                Text("\(reminder.location ?? String("no location"))")
-                    .italic()
-            }
-            .frame(width: 120, height: 150)
-            .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.86, height: 150)
+                    .offset(x: 60, y: 20)
+                    .rotationEffect(Angle(degrees: -45))
+                    .opacity(0.3)
+                    .clipShape(RoundedRectangle(cornerRadius: 10)))
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 3)))
+            .padding([.horizontal, .top])
             
-        }
-        .offset(y: -40)
-        .padding()
-        .frame(width: UIScreen.main.bounds.width * 0.86, height: 150)
-        .background(RoundedRectangle(cornerRadius: 10)
-            .fill(.thinMaterial)
-            .background(Image(systemName: "map.fill")
-                .resizable()
-                .scaledToFit()
+            if reminder.completed {
+                VStack {
+                    HStack {
+                        Circle()
+//                        Image(systemName: "circle.fill")
+                            .foregroundColor(.green)
+                            .frame(width: 20, height: 20)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 15)
+                        
+                        Spacer()
+                    }
+                    Spacer()
+                }
                 .frame(width: UIScreen.main.bounds.width * 0.86, height: 150)
-                .offset(x: 60, y: 20)
-                .rotationEffect(Angle(degrees: -45))
-                .opacity(0.3)
-                .clipShape(RoundedRectangle(cornerRadius: 10)))
-            .overlay(RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 3)))
-        
-        .padding([.horizontal, .top])
+            }
+        }
     }
 }
 
@@ -94,30 +112,43 @@ struct NextUpcomingEvents: View {
     var reminder: FetchedResults<Reminder>.Element
     
     var body: some View {
-            HStack {
-                    VStack(alignment: .leading) {
-                        Text("\(reminder.title!)")
-                            .font(.title)
-                        VStack {
-                            Text("\((reminder.date?.formatted(date: .omitted, time: .standard))!)")
-                                .font(.footnote)
-                                .italic()
-                            Text("\((reminder.date?.formatted(date: .numeric, time: .omitted))!)")
-                                .font(.footnote)
-                        }
-                        Text("\(reminder.location ?? String("no location"))")
-                            .font(.footnote)
-                            .italic()
-                    }
-//                    .padding()
-                    .frame(width: 150, height: 120)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(.thinMaterial)
-                        .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 3)))
-                    
-                    .padding([.bottom, .trailing])
+        ZStack {
+            VStack(alignment: .leading) {
+                Text("\(reminder.title!)")
+                    .font(.title)
+                VStack(alignment: .leading) {
+                    Text("\((reminder.date?.formatted(date: .omitted, time: .standard))!)")
+                        .font(.footnote)
+                        .italic()
+                    Text("\((reminder.date?.formatted(date: .numeric, time: .omitted))!)")
+                        .font(.footnote)
                 }
-        
+                Text("\(reminder.location ?? String("no location"))")
+                    .font(.footnote)
+                    .italic()
+            }
+            .frame(width: 150, height: 120)
+            .background(RoundedRectangle(cornerRadius: 10)
+                .fill(.thinMaterial)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 3)))
+            
+            .padding([.bottom, .trailing])
+            
+            if reminder.completed {
+                VStack {
+                    HStack {
+                        Circle()
+                            .foregroundColor(.green)
+                            .frame(width: 20, height: 20)
+                        
+                        Spacer()
+                    }
+                    Spacer()
+                }
+                .frame(width: 150, height: 120)
+            }
+                
+        }
     }
 }
