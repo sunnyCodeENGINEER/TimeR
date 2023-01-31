@@ -14,6 +14,7 @@ struct UpcomingEventView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.completed), SortDescriptor(\.date)]
                   , predicate: NSPredicate(format: "shouldRepeat = false")) var todos: FetchedResults<Reminder>
     
+    @State private var eventsDue: [Reminder] = []
     @State private var showingAddView = false
     @State private var showActionSheet: Bool = false
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -137,7 +138,12 @@ struct UpcomingEventView: View {
         }
         .onReceive(self.timer) { value in
             todos.forEach { todo in
-                if Int(systemCalcTimeSince(date: todo.date!)) ?? 1 < 0 {
+                if Int(systemCalcTimeSince2(date: todo.date!)) ?? 1 < 0 {
+                    DataController().editReminder(reminder: todo, title: todo.title!, summary: todo.summary!, date: todo.date ?? Date(), shouldRepeat: todo.shouldRepeat, frequency: todo.frequency ?? "daily", completed: todo.completed, skipped: true, context: managedObjectContext)
+                }
+            }
+            todos.forEach { todo in
+                if Int(systemCalcTimeSince2(date: todo.date!)) ?? 1 < -600 {
                     managedObjectContext.delete(todo)
                     
                     DataController().save(context: managedObjectContext)
@@ -145,6 +151,7 @@ struct UpcomingEventView: View {
             }
             reminders.forEach { reminder in
                 if Int(systemCalcTimeSince(date: reminder.date!)) ?? 1 < 0 {
+                    eventsDue.append(reminder)
                     if reminder.frequency == "daily" {
                         var dateComponent = DateComponents()
                         dateComponent.day = 1
@@ -167,7 +174,6 @@ struct UpcomingEventView: View {
                     }
                     
                     DataController().editReminder(reminder: reminder, title: reminder.title!, summary: reminder.summary!, date: reminder.date!, shouldRepeat: reminder.shouldRepeat, frequency: reminder.frequency!, completed: false, context: managedObjectContext)
-                    //                    DataController().save(context: managedObjectContext)
                 }
             }
         }

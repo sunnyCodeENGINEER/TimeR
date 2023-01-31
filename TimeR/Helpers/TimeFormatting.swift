@@ -12,7 +12,13 @@ func calcTimeSince(date: Date) -> String {
     let hoursOnly = minutesOnly / 60
     let daysOnly = hoursOnly / 24
     
-    if minutesOnly < 120 {
+    if minutesOnly >= -120 && hoursOnly < 48 {
+        return "\(hoursOnly) hours ago"
+    }
+    else if minutesOnly < 0 {
+        return "\(minutesOnly) minutes ago"
+    }
+    else if minutesOnly < 120 {
         return "\(minutesOnly) minutes more"
     } else if minutesOnly >= 120 && hoursOnly < 48 {
         return "\(hoursOnly) hours more"
@@ -33,4 +39,11 @@ func systemCalcTimeSince(date: Date) -> String {
     } else {
         return "\(daysOnly)"
     }
+}
+
+func systemCalcTimeSince2(date: Date) -> String {
+    let minutesOnly = Int(date.timeIntervalSinceNow) / 60
+    
+    return "\(minutesOnly)"
+   
 }

@@ -40,13 +40,14 @@ class DataController: ObservableObject {
         save(context: context)
     }
     
-    func editReminder(reminder: Reminder, title: String, summary: String, date: Date, shouldRepeat: Bool, frequency: String, completed: Bool, context: NSManagedObjectContext) {
+    func editReminder(reminder: Reminder, title: String, summary: String, date: Date, shouldRepeat: Bool, frequency: String, completed: Bool, skipped: Bool = false, context: NSManagedObjectContext) {
         reminder.title = title
         reminder.summary = summary
         reminder.date = date
         reminder.shouldRepeat = shouldRepeat
         reminder.completed = completed
         reminder.frequency = frequency
+        reminder.skipped = skipped
         
         save(context: context)
     }
