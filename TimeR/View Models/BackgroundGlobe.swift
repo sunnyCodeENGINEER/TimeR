@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BackgroundGlobe: View {
+    @EnvironmentObject var colorScheme: TimeColorScheme
+    
     @State var color: Color = .green
     var body: some View {
         Image(systemName: "globe.europe.africa.fill")
@@ -15,7 +17,7 @@ struct BackgroundGlobe: View {
             .frame(width: UIScreen.main.bounds.width * 1.5, height: UIScreen.main.bounds.width * 1.5)
             .scaledToFit()
             .position(x: UIScreen.main.bounds.width * 0.7, y: UIScreen.main.bounds.height * 0.8)
-            .foregroundColor(color)
+            .foregroundColor(colorScheme.color3)
     }
 }
 

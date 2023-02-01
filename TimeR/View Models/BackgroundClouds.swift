@@ -52,7 +52,7 @@ struct Cloud: View {
                 .position(x: animate ? UIScreen.main.bounds.width * scaleFactor : xAxis, y: yAxis)
                 .animation(.linear(duration: animationDuration).repeatForever(), value: animate)
         }
-        .background(.black.opacity(0.5))
+//        .background(.black.opacity(0.5))
         .onAppear {
             withAnimation {
                 animate = true

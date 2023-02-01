@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct MissedEventsView: View {
+    @State var tryArray: [String] = ["hello", "hi", "welcome", "akwaaba"]
+    let dateFormatter = DateFormatter()
+    @State var testString = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("test - \(testString)")
+            Text("\(Date().formatted(date: .omitted, time: .standard))")
+            List {
+                ForEach(0..<tryArray.count, id: \.self) { index in
+                    Text("\(tryArray[index])")
+                        .swipeActions {
+                            Button {
+                                tryArray.remove(at: index)
+                            } label: {
+                                Text("Remove")
+                            }
+                            .tint(.red)
+                        }
+                }
+            }
+        }
+        .onAppear {
+            dateFormatter.dateFormat = "HH:mm:ssa"
+            testString = (dateFormatter.date(from: "12:00:00am")?.formatted(date: .omitted, time: .standard))!
+        }
     }
 }
 

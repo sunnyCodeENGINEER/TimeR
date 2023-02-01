@@ -14,6 +14,7 @@ struct BackgroundSun: View {
     @State var xStep: CGFloat = 1
     @State var yStep: CGFloat = 1
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var opacity: Double = 1
     
     @State var holder1 = ""
     @State var holder2 = ""
@@ -22,22 +23,22 @@ struct BackgroundSun: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                Text("\(xAxis)")
-                Text("\(timeString)")
-                Text("\(UIScreen.main.bounds.width * 1.3)")
-                Text(holder1)
-            }
+//            VStack {
+//                Text("\(xAxis)")
+//                Text("\(timeString)")
+//                Text("\(UIScreen.main.bounds.width * 1.3)")
+//                Text(holder1)
+//            }
 
             VStack {
-                Image("SunIcon")
+                Image("SunIcon2")
                     .resizable()
                     .frame(width: 200, height: 200)
                     .rotationEffect(Angle(degrees: 30))
                     .scaledToFit()
                     .position(x: xAxis, y: yAxis)
+                    
             }
-            .background(.black.opacity(0.5))
             .onAppear {
                 xStep = sunAnimationStepper().0
                 yStep = sunAnimationStepper().1
@@ -50,6 +51,9 @@ struct BackgroundSun: View {
                 timeString = Double(BackgroundGradient().date24HourFormatter(time: Date.now.formatted(.dateTime.hour())))!
                 
                 switch timeString {
+                case 0..<5:
+                    opacity = 0
+                    break
                 case 5..<12:
                     let constant =  timeInSeconds("04:59:59")
                     let currentTime = timeInSeconds(value.formatted(.dateTime.hour(.conversationalDefaultDigits(amPM: .omitted)).minute().second()))
@@ -57,7 +61,9 @@ struct BackgroundSun: View {
                     holder1 = String(temp)
                     holder2 = String(currentTime)
                     
-                    
+                    withAnimation {
+                        opacity = 1
+                    }
                     xAxis = ((UIScreen.main.bounds.width * 1.3) / 43200) * Double(temp)! - 50
                     break
                 case 12:
@@ -67,7 +73,9 @@ struct BackgroundSun: View {
                     holder1 = String(temp)
                     holder2 = String(currentTime)
                     
-                    
+                    withAnimation {
+                        opacity = 1
+                    }
                     xAxis = ((UIScreen.main.bounds.width * 1.3) / 43200) * Double(temp)! - 50
                 case 13..<17:
                     let constant =  timeInSeconds("07:00:00")
@@ -76,14 +84,18 @@ struct BackgroundSun: View {
                     holder1 = String(temp)
                     holder2 = String(currentTime)
                     
-                    
+                    withAnimation {
+                        opacity = 1
+                    }
                     xAxis = ((UIScreen.main.bounds.width * 1.3) / 43200) * Double(temp)! - 50
                     break
-                
+                case 17..<24:
+                    opacity = 0
+                    break
                 default:
                     break
                 }
-        }
+            }
         }
     }
     

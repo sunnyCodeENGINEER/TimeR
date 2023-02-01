@@ -14,6 +14,7 @@ struct BackgroundMoon: View {
     @State var xStep: CGFloat = 1
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var animate: Bool = false
+    @State private var opacity: Double = 1
     
     @State var holder1 = ""
     @State var holder2 = ""
@@ -22,15 +23,15 @@ struct BackgroundMoon: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                Text("\(xAxis)")
-                Text("\(timeString)")
-                Text("\(UIScreen.main.bounds.width * 1.3)")
-                Text(holder1)
-                Text(holder2)
-                Text(holder3)
-                Text(holder4)
-            }
+//            VStack {
+//                Text("\(xAxis)")
+//                Text("\(timeString)")
+//                Text("\(UIScreen.main.bounds.width * 1.3)")
+//                Text(holder1)
+//                Text(holder2)
+//                Text(holder3)
+//                Text(holder4)
+//            }
             
             VStack {
                 Image("MoonIcon")
@@ -41,7 +42,7 @@ struct BackgroundMoon: View {
                     .position(x: xAxis, y: yAxis)
                     .animation(.spring(), value: xAxis)
             }
-            .background(.black.opacity(0.5))
+            .opacity(opacity)
             .onAppear {
                 xStep = moonAnimationStepper()
             }
@@ -59,7 +60,9 @@ struct BackgroundMoon: View {
                     holder2 = String(currentTime)
                     holder3 = String(constant)
                     
-                    
+                    withAnimation {
+                        opacity = 1
+                    }
                     xAxis = ((UIScreen.main.bounds.width * 1.3) / 32400) * Double(temp)! - 50
                     break
                 case 0:
@@ -70,6 +73,9 @@ struct BackgroundMoon: View {
                     holder2 = String(currentTime)
                     holder3 = String(constant)
                     
+                    withAnimation {
+                        opacity = 1
+                    }
                     xAxis = ((UIScreen.main.bounds.width * 1.3) / 32400) * Double(temp)! - 50
                     break
                 case 1..<4:
@@ -81,9 +87,14 @@ struct BackgroundMoon: View {
                     holder3 = String(constant)
                     holder4 = Date.now.formatted()
                     
+                    withAnimation {
+                        opacity = 1
+                    }
                     xAxis = ((UIScreen.main.bounds.width * 1.3) / 32400) * Double(temp)! - 50
                     break
-                
+                case 4..<19:
+                    opacity = 0
+                    break
                 default:
                     break
                 }

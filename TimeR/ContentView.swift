@@ -12,7 +12,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            UpcomingEventView()
+            BackgroundView()
+//            UpcomingEventView()
 //            TestHomeView()
 //            BackgroundNightSkyOverlay()
                 .environmentObject(colorScheme)

@@ -22,11 +22,11 @@ struct BackgroundGradient: View {
                 .opacity(animate ? 1 : 0)
                 .animation(.easeInOut(duration: 2), value: colorScheme.color1)
             
-            VStack {
-                Text(String(timeString))
-                
-                Text(trial)
-            }
+//            VStack {
+//                Text(String(timeString))
+//                
+//                Text(trial)
+//            }
         }
         .onReceive(self.timer) { value in
             let temp = date24HourFormatter(time: Date.now.formatted(.dateTime.hour()))
@@ -42,7 +42,6 @@ struct BackgroundGradient: View {
                 colorScheme.color5 = Color(0x1D1D43)
                 break
             case 1..<3:
-                trial = "Success"
                 // done
                 colorScheme.color1 = Color(0x3D1C51)
                 colorScheme.color2 = Color(0x8848B4)

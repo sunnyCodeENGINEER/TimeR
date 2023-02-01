@@ -37,12 +37,12 @@ struct BackgroundNightSkyOverlay: View {
                 .opacity(opacity2)
                 .animation(.linear, value: animateOpacity2)
             
-            VStack {
-                Text(String(timeString))
-                Text(String(timeStringTest))
-                Text("\(opacity1)")
-                Text("\(opacity2)")
-            }
+//            VStack {
+//                Text(String(timeString))
+//                Text(String(timeStringTest))
+//                Text("\(opacity1)")
+//                Text("\(opacity2)")
+//            }
         }
         .onAppear {
             // new code goes here
@@ -53,10 +53,10 @@ struct BackgroundNightSkyOverlay: View {
                 opacity1 = 1
             }
             if timeString >= 0 && timeString < 2 {
-                opacity2 = 1
+                opacity2 = 0
             }
             if timeString >= 0 && timeString < 3 {
-                opacity1 = 1
+                opacity1 = 0
             }
             print("here")
             

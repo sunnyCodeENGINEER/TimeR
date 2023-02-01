@@ -10,16 +10,18 @@ import SwiftUI
 struct UpcomingEventView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.completed), SortDescriptor(\.date)]
-                  , predicate: NSPredicate(format: "shouldRepeat = true")) var reminders: FetchedResults<Reminder>
+                  , predicate: NSPredicate(format: "shouldRepeat = true", "completed = false")) var reminders: FetchedResults<Reminder>
     @FetchRequest(sortDescriptors: [SortDescriptor(\.completed), SortDescriptor(\.date)]
-                  , predicate: NSPredicate(format: "shouldRepeat = false")) var todos: FetchedResults<Reminder>
+                  , predicate: NSPredicate(format: "shouldRepeat = false", "completed = false")) var todos: FetchedResults<Reminder>
     
     @State private var eventsDue: [Reminder] = []
+    @State private var todoDue: [Reminder] = []
     @State private var showingAddView = false
     @State private var showActionSheet: Bool = false
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
+//        var missedEvents: Void = UserDefaults.standard.set(eventsDue, forKey: "missedEvents")
         NavigationStack {
             List {
                 ForEach(self.reminders.indices, id: \.self) { index in
@@ -137,9 +139,23 @@ struct UpcomingEventView: View {
             .listStyle(.plain)
         }
         .onReceive(self.timer) { value in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm:ssa"
+            let newDayCheck = (dateFormatter.date(from: "12:00:00am")?.formatted(date: .omitted, time: .standard)) ?? Date().formatted(date: .omitted, time: .standard)
+            if Date().formatted(date: .omitted, time: .standard) == newDayCheck {
+                eventsDue.removeAll()
+                todoDue.removeAll()
+            }
             todos.forEach { todo in
                 if Int(systemCalcTimeSince2(date: todo.date!)) ?? 1 < 0 {
-                    DataController().editReminder(reminder: todo, title: todo.title!, summary: todo.summary!, date: todo.date ?? Date(), shouldRepeat: todo.shouldRepeat, frequency: todo.frequency ?? "daily", completed: todo.completed, skipped: true, context: managedObjectContext)
+                    if !todo.completed {
+                        DataController().editReminder(reminder: todo, title: todo.title!, summary: todo.summary!, date: todo.date ?? Date(), shouldRepeat: todo.shouldRepeat, frequency: todo.frequency ?? "daily", completed: todo.completed, skipped: true, context: managedObjectContext)
+                        todoDue.append(todo)
+                    } else {
+                        managedObjectContext.delete(todo)
+                        
+                        DataController().save(context: managedObjectContext)
+                    }
                 }
             }
             todos.forEach { todo in

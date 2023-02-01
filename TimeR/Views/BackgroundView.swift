@@ -13,6 +13,14 @@ struct BackgroundView: View {
             BackgroundGradient()
             
             BackgroundGlobe()
+            
+            BackgroundClouds()
+            
+            BackgroundSun()
+            
+            BackgroundMoon()
+            
+            BackgroundNightSkyOverlay()
         }
     }
 }
