@@ -40,6 +40,7 @@
 		25FCB7932984035E00F26EC2 /* TodoDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7922984035E00F26EC2 /* TodoDataController.swift */; };
 		25FCB7962984038000F26EC2 /* TodoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7942984038000F26EC2 /* TodoModel.xcdatamodeld */; };
 		25FCB7982987881E00F26EC2 /* MissedEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB7972987881E00F26EC2 /* MissedEventsView.swift */; };
+		25FCB79A298AF00200F26EC2 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FCB799298AF00200F26EC2 /* MainAppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		25FCB7922984035E00F26EC2 /* TodoDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDataController.swift; sourceTree = "<group>"; };
 		25FCB7952984038000F26EC2 /* TodoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoModel.xcdatamodel; sourceTree = "<group>"; };
 		25FCB7972987881E00F26EC2 /* MissedEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedEventsView.swift; sourceTree = "<group>"; };
+		25FCB799298AF00200F26EC2 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				257013E22976972700B407A8 /* BackgroundView.swift */,
+				25FCB799298AF00200F26EC2 /* MainAppView.swift */,
 				25FCB78A2980EA8100F26EC2 /* EditReminderView.swift */,
 			);
 			path = Views;
@@ -420,6 +423,7 @@
 				257013E729769FCA00B407A8 /* BackgroundGlobe.swift in Sources */,
 				257013EF29770B9500B407A8 /* BackgroundClouds.swift in Sources */,
 				257014022978DE9B00B407A8 /* AddReminderView.swift in Sources */,
+				25FCB79A298AF00200F26EC2 /* MainAppView.swift in Sources */,
 				25FCB7872980D79300F26EC2 /* EditReminderTime.swift in Sources */,
 				257013F329778C1800B407A8 /* BackgroundNightSkyOverlay.swift in Sources */,
 				257013ED2976A67200B407A8 /* BackgroundMoon.swift in Sources */,

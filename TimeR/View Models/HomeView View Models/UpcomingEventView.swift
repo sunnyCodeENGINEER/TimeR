@@ -21,18 +21,103 @@ struct UpcomingEventView: View {
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-//        var missedEvents: Void = UserDefaults.standard.set(eventsDue, forKey: "missedEvents")
         NavigationStack {
-            List {
-                ForEach(self.reminders.indices, id: \.self) { index in
-                    if index == 0 {
-                        NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
-                            ZStack {
-                                FirstUpcomingEvent(reminder: reminders[index])
+            ZStack {
+                BackgroundView()
+                
+                VStack {
+                    List {
+                        ForEach(self.reminders.indices, id: \.self) { index in
+                            if index == 0 {
+                                NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
+                                    ZStack {
+                                        FirstUpcomingEvent(reminder: reminders[index])
+                                    }
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                        Button {
+                                            managedObjectContext.delete(reminders[index])
+                                            
+                                            DataController().save(context: managedObjectContext)
+                                        } label: {
+                                            Image(systemName: "trash.fill")
+                                        }
+                                        .tint(.red)
+                                    }
+                                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                        if !reminders[index].completed {
+                                            Button {
+                                                DataController().editReminder(reminder: reminders[index], title: reminders[index].title!, summary: reminders[index].summary!, date: reminders[index].date!, shouldRepeat: reminders[index].shouldRepeat, frequency: reminders[index].frequency ?? "daily", completed: true, context: managedObjectContext)
+                                                
+                                            } label: {
+                                                Image(systemName: "checkmark.circle.fill")
+                                            }
+                                            .tint(.green)
+                                        } else {
+                                            Button {
+                                                DataController().editReminder(reminder: reminders[index], title: reminders[index].title!, summary: reminders[index].summary!, date: reminders[index].date!, shouldRepeat: reminders[index].shouldRepeat, frequency: reminders[index].frequency ?? "daily", completed: false, context: managedObjectContext)
+                                                
+                                            } label: {
+                                                Image(systemName: "x.circle.fill")
+                                            }
+                                            .tint(.red)
+                                        }
+                                    }
+                                }
                             }
+                        }
+                        .listRowBackground(Color.clear)
+                        .padding([.leading, .top])
+                        
+                        ScrollView(.horizontal) {
+                            HStack(spacing: 5) {
+                                ForEach(self.reminders.indices, id: \.self) { index in
+                                    if index != 0 {
+                                        NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
+                                            NextUpcomingEvents(reminder: reminders[index])
+                                                .tint(Color("myBlack"))
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .ignoresSafeArea()
+                        .listRowBackground(Color.clear)
+                        .navigationTitle("Upcoming Events")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button {
+                                    showingAddView.toggle()
+                                } label: {
+                                    Label("Add Reminder", systemImage: "plus.circle")
+                                }
+                            }
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                EditButton()
+                            }
+                        }
+                        .sheet(isPresented: $showingAddView) {
+                            AddReminderView()
+                        }
+                    }
+                    .listStyle(.plain)
+                    .background(.clear)
+                
+                
+                Text("TODO")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding()
+                
+                List {
+                    ForEach(self.todos) { item in
+                        NavigationLink(destination: EditReminderView(reminder: item)) {
+                            ZStack {
+                                TodoListView(reminder: item)
+                            }
+                            .padding(.leading)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button {
-                                    managedObjectContext.delete(reminders[index])
+                                    managedObjectContext.delete(item)
                                     
                                     DataController().save(context: managedObjectContext)
                                 } label: {
@@ -41,18 +126,16 @@ struct UpcomingEventView: View {
                                 .tint(.red)
                             }
                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                if !reminders[index].completed {
+                                if !item.completed {
                                     Button {
-                                        DataController().editReminder(reminder: reminders[index], title: reminders[index].title!, summary: reminders[index].summary!, date: reminders[index].date!, shouldRepeat: reminders[index].shouldRepeat, frequency: reminders[index].frequency ?? "daily", completed: true, context: managedObjectContext)
-                                        
+                                        DataController().editReminder(reminder: item, title: item.title!, summary: item.summary!, date: item.date!, shouldRepeat: item.shouldRepeat, frequency: item.frequency ?? "daily", completed: true, context: managedObjectContext)
                                     } label: {
                                         Image(systemName: "checkmark.circle.fill")
                                     }
                                     .tint(.green)
                                 } else {
                                     Button {
-                                        DataController().editReminder(reminder: reminders[index], title: reminders[index].title!, summary: reminders[index].summary!, date: reminders[index].date!, shouldRepeat: reminders[index].shouldRepeat, frequency: reminders[index].frequency ?? "daily", completed: false, context: managedObjectContext)
-                                        
+                                        DataController().editReminder(reminder: item, title: item.title!, summary: item.summary!, date: item.date!, shouldRepeat: item.shouldRepeat, frequency: item.frequency!, completed: false, context: managedObjectContext)
                                     } label: {
                                         Image(systemName: "x.circle.fill")
                                     }
@@ -61,83 +144,15 @@ struct UpcomingEventView: View {
                             }
                         }
                     }
+                    .listRowBackground(Color.clear)
                 }
-                .padding([.leading, .top])
-                
-                ScrollView(.horizontal) {
-                    HStack(spacing: 5) {
-                        Spacer(minLength: 5)
-                        ForEach(self.reminders.indices, id: \.self) { index in
-                            if index != 0 {
-                                NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
-                                    NextUpcomingEvents(reminder: reminders[index])
-                                        .tint(Color("myBlack"))
-                                }
-                            }
-                        }
-                    }
+                .listStyle(.plain)
                 }
-                .navigationTitle("Upcoming Events")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            showingAddView.toggle()
-                        } label: {
-                            Label("Add Reminder", systemImage: "plus.circle")
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        EditButton()
-                    }
-                }
-                .sheet(isPresented: $showingAddView) {
-                    AddReminderView()
-                }
+                .background(Color.clear)
             }
-            Text("TODO")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding()
-            
-            List {
-                ForEach(self.todos) { item in
-                    NavigationLink(destination: EditReminderView(reminder: item)) {
-                        ZStack {
-                            TodoListView(reminder: item)
-                        }
-                        .padding(.leading)
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                            Button {
-                                managedObjectContext.delete(item)
-                                
-                                DataController().save(context: managedObjectContext)
-                            } label: {
-                                Image(systemName: "trash.fill")
-                            }
-                            .tint(.red)
-                        }
-                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                            if !item.completed {
-                                Button {
-                                    DataController().editReminder(reminder: item, title: item.title!, summary: item.summary!, date: item.date!, shouldRepeat: item.shouldRepeat, frequency: item.frequency ?? "daily", completed: true, context: managedObjectContext)
-                                } label: {
-                                    Image(systemName: "checkmark.circle.fill")
-                                }
-                                .tint(.green)
-                            } else {
-                                Button {
-                                    DataController().editReminder(reminder: item, title: item.title!, summary: item.summary!, date: item.date!, shouldRepeat: item.shouldRepeat, frequency: item.frequency!, completed: false, context: managedObjectContext)
-                                } label: {
-                                    Image(systemName: "x.circle.fill")
-                                }
-                                .tint(.red)
-                            }
-                        }
-                    }
-                }
-            }
-            .listStyle(.plain)
-        }
+            .background(Color.clear)
+        
+    }
         .onReceive(self.timer) { value in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm:ssa"

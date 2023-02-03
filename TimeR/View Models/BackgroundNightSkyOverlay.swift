@@ -58,7 +58,6 @@ struct BackgroundNightSkyOverlay: View {
             if timeString >= 0 && timeString < 3 {
                 opacity1 = 0
             }
-            print("here")
             
         }
         .onReceive(self.timer) { value in
@@ -94,8 +93,8 @@ struct BackgroundNightSkyOverlay: View {
                     
                     opacity2 = 0 + opacityDifference(temp)
                     
-                    print("\nO2")
-                    print(temp)
+//                    print("\nO2")
+//                    print(temp)
                 }
 //                break
             case 18..<21:
@@ -107,8 +106,8 @@ struct BackgroundNightSkyOverlay: View {
                     
                     opacity1 = 0 + opacityDifference(temp)
                     
-                    print("\nO1")
-                    print(temp)
+//                    print("\nO1")
+//                    print(temp)
                 }
                 break
             default:

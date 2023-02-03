@@ -39,6 +39,7 @@ struct BackgroundSun: View {
                     .position(x: xAxis, y: yAxis)
                     
             }
+            .opacity(opacity)
             .onAppear {
                 xStep = sunAnimationStepper().0
                 yStep = sunAnimationStepper().1
