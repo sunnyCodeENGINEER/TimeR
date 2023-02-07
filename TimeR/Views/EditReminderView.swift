@@ -21,59 +21,71 @@ struct EditReminderView: View {
     @State private var frequency: String = ""
     
     var body: some View {
-        Form {
-            Section {
-                Text("\(reminder.completed.description)")
-                VStack(alignment: .leading) {
-                    Text("Title")
-                    TextField("Title", text: $title)
-                }
-                .padding()
-                .onAppear {
-                    title = reminder.title!
-                    summary = reminder.summary!
-                    date = reminder.date!
-                    shouldRepeat = reminder.shouldRepeat
-                    completed = reminder.completed
-                    frequency = reminder.frequency ?? "daily"
-                }
-                VStack(alignment: .leading) {
-                    Text("Summary")
-                    TextField("Summary", text: $summary)
-                }
-                .padding()
-                VStack(alignment: .leading) {
-                    DatePicker("Date", selection: $date, in: Date()...)
-                }
-                .padding()
-                
-                Toggle("Repeat", isOn: $shouldRepeat)
-                    .background(.gray.opacity(0.3))
-                
-                if shouldRepeat {
-                    Picker("Pick a frequency", selection: $frequency) {
-                        Text("daily").tag("daily")
-                        Text("weekly").tag("weekly")
-                        Text("monthly").tag("monthly")
-                        Text("yearly").tag("yearly")
+        ZStack {
+            Form {
+                Section {
+                    VStack(alignment: .leading) {
+                        Text("Title")
+                            .labelModifier()
+                        TextField("Title", text: $title)
+                            .inputFieldModifier()
                     }
-                    .animation(.easeInOut, value: shouldRepeat)
-                }
-                HStack {
-                    Spacer()
-                    Button {
-                        DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, frequency: frequency, completed: completed, context: managedObjectContext)
-                        print(frequency)
-                        dismiss()
-                    } label: {
-                        Text("Submit")
-                            .font(.title)
+                    .sectionModifier()
+                    .onAppear {
+                        title = reminder.title!
+                        summary = reminder.summary!
+                        date = reminder.date!
+                        shouldRepeat = reminder.shouldRepeat
+                        completed = reminder.completed
+                        frequency = reminder.frequency ?? "daily"
                     }
+                    VStack(alignment: .leading) {
+                        Text("Summary")
+                            .labelModifier()
+                        TextField("Summary", text: $summary)
+                            .inputFieldModifier()
+                    }
+                    .sectionModifier()
+                    VStack(alignment: .leading) {
+                        DatePicker("Date", selection: $date, in: Date()...)
+                    }
+                    .padding()
+                    
+                    Toggle("Repeat", isOn: $shouldRepeat)
+                        .background(.gray.opacity(0.3))
+                    
+                    if shouldRepeat {
+                        Picker("Pick a frequency", selection: $frequency) {
+                            Text("daily").tag("daily")
+                            Text("weekly").tag("weekly")
+                            Text("monthly").tag("monthly")
+                            Text("yearly").tag("yearly")
+                        }
+                        .animation(.easeInOut, value: shouldRepeat)
+                    }
+                    HStack {
+                        Spacer()
+                        Button {
+                            DataController().editReminder(reminder: reminder, title: title, summary: summary, date: date, shouldRepeat: shouldRepeat, frequency: frequency, completed: completed, context: managedObjectContext)
+                            print(frequency)
+                            dismiss()
+                        } label: {
+                            Text("Submit")
+                                .submitButtonModifier()
+                        }
+                        Spacer()
+                    }
+                    
                     Spacer()
                 }
-                
-                Spacer()
             }
+            
+            Image(systemName: "goforward.plus")
+                .resizable()
+                .scaledToFit()
+                .opacity(0.2)
+                .position(x: UIScreen.main.bounds.width * 0.7,
+                          y : UIScreen.main.bounds.height * 0.7)
         }
     }
 }

@@ -76,6 +76,7 @@ struct FirstUpcomingEvent: View {
             .frame(width: UIScreen.main.bounds.width * 0.86, height: 150)
             .background(RoundedRectangle(cornerRadius: 10)
                 .fill(.thinMaterial)
+                .shadow(radius: 5)
                 .background(Image(systemName: "map.fill")
                     .resizable()
                     .scaledToFit()
@@ -85,7 +86,7 @@ struct FirstUpcomingEvent: View {
                     .opacity(0.3)
                     .clipShape(RoundedRectangle(cornerRadius: 10)))
                 .overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 3)))
+                    .stroke(.white, lineWidth: 3)))
             .padding([.horizontal, .top])
             
             if reminder.completed {
@@ -130,10 +131,12 @@ struct NextUpcomingEvents: View {
             .frame(width: 150, height: 120)
             .background(RoundedRectangle(cornerRadius: 10)
                 .fill(.thinMaterial)
+                .shadow(radius: 3)
                 .overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 3)))
+                    .stroke(.white, lineWidth: 3)))
             
             .padding([.bottom, .trailing])
+            .padding(.bottom, 3)
             
             if reminder.completed {
                 VStack {

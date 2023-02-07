@@ -14,6 +14,8 @@ struct UpcomingEventView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.completed), SortDescriptor(\.date)]
                   , predicate: NSPredicate(format: "shouldRepeat = false", "completed = false")) var todos: FetchedResults<Reminder>
     
+    @EnvironmentObject var colorScheme: TimeColorScheme
+    
     @State private var eventsDue: [Reminder] = []
     @State private var todoDue: [Reminder] = []
     @State private var showingAddView = false
@@ -29,9 +31,10 @@ struct UpcomingEventView: View {
                     List {
                         ForEach(self.reminders.indices, id: \.self) { index in
                             if index == 0 {
-                                NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
+                                NavigationLink(destination: EditReminderView(reminder: reminders[index]).tint(colorScheme.color5)) {
                                     ZStack {
                                         FirstUpcomingEvent(reminder: reminders[index])
+                                            .shadow(radius: 5)
                                     }
                                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                         Button {
@@ -75,6 +78,7 @@ struct UpcomingEventView: View {
                                         NavigationLink(destination: EditReminderView(reminder: reminders[index])) {
                                             NextUpcomingEvents(reminder: reminders[index])
                                                 .tint(Color("myBlack"))
+                                                .shadow(radius: 3)
                                         }
                                     }
                                 }
@@ -90,13 +94,16 @@ struct UpcomingEventView: View {
                                 } label: {
                                     Label("Add Reminder", systemImage: "plus.circle")
                                 }
+                                .tint(Color("myBlack"))
                             }
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                EditButton()
-                            }
+//                            ToolbarItem(placement: .navigationBarLeading) {
+//                                EditButton()
+//                                    .tint(Color("myBlack"))
+//                            }
                         }
                         .sheet(isPresented: $showingAddView) {
                             AddReminderView()
+                                .tint(colorScheme.color5)
                         }
                     }
                     .listStyle(.plain)
@@ -110,9 +117,10 @@ struct UpcomingEventView: View {
                 
                 List {
                     ForEach(self.todos) { item in
-                        NavigationLink(destination: EditReminderView(reminder: item)) {
+                        NavigationLink(destination: EditReminderView(reminder: item).tint(colorScheme.color5)) {
                             ZStack {
                                 TodoListView(reminder: item)
+//                                    .shadow(radius: 2)
                             }
                             .padding(.leading)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {

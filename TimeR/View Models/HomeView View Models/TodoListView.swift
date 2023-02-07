@@ -35,8 +35,9 @@ struct TodoListView: View {
             .frame(width: 400, height: 80)
             .background(RoundedRectangle(cornerRadius: 10)
                 .fill(.thinMaterial)
+                .shadow(radius: 5)
                 .overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 2)))
+                    .stroke(.white, lineWidth: 2)))
             
             .padding(.horizontal)
         }
