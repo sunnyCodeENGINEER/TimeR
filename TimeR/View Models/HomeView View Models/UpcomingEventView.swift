@@ -160,7 +160,23 @@ struct UpcomingEventView: View {
             }
             .background(Color.clear)
         
-    }
+        }
+        .onAppear {
+            var newEventsDue: [Reminder] = []
+            eventsDue.forEach { event in
+                if Int(event.date!.formatted(.dateTime.day(.defaultDigits))) ?? 0 >= Int(Date().formatted(.dateTime.day(.defaultDigits))) ?? 0 {
+                    newEventsDue.append(event)
+                }
+            }
+            eventsDue = newEventsDue
+            var newTodoDue: [Reminder] = []
+            todoDue.forEach { todo in
+                if Int(todo.date!.formatted(.dateTime.day(.defaultDigits))) ?? 0 >= Int(Date().formatted(.dateTime.day(.defaultDigits))) ?? 0 {
+                    newEventsDue.append(todo)
+                }
+            }
+            todoDue = newTodoDue
+        }
         .onReceive(self.timer) { value in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm:ssa"
@@ -226,8 +242,8 @@ struct UpcomingEventView: View {
     }
 }
 
-struct UpcomingEventView_Previews: PreviewProvider {
-    static var previews: some View {
-        UpcomingEventView()
-    }
-}
+//struct UpcomingEventView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UpcomingEventView()
+//    }
+//}

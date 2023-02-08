@@ -14,7 +14,13 @@ struct MissedEventsView: View {
     
     var body: some View {
         VStack {
-            Text("test - \(testString)")
+            HStack {
+                Text("Number of missed events")
+                Spacer()
+                Text("\(tryArray.count)")
+                    .font(.title2)
+                    .foregroundColor(.red)
+            }.padding()
             Text("\(Date().formatted(date: .omitted, time: .standard))")
             List {
                 ForEach(0..<tryArray.count, id: \.self) { index in
@@ -33,6 +39,7 @@ struct MissedEventsView: View {
         .onAppear {
             dateFormatter.dateFormat = "HH:mm:ssa"
             testString = (dateFormatter.date(from: "12:00:00am")?.formatted(date: .omitted, time: .standard))!
+            tryArray.reverse()
         }
     }
 }
